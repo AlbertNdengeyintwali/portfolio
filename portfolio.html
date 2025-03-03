@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Ndengeyintwali - Portfolio</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        /* Container to center content */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* Navigation bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #0044cc;
+        }
+
+        /* Logo Image */
+        .logo img {
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 50px;  /* Moves image down */
+    margin-left: 40px; /* Moves image to the right */
+}
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 100px 0;
+            background-color: #0044cc;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        header p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        header .hire-button {
+            background-color: #ffffff;
+            color: #0044cc;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #0044cc;
+        }
+
+        header .hire-button:hover {
+            background-color: #0044cc;
+            color: white;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        section#about {
+            background-color: #f4f4f4;
+        }
+
+        section#skills ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        section#skills ul li {
+            background-color: #e2e2e2;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        section#projects .project-card {
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        section#projects .project-card a {
+            display: inline-block;
+            padding: 10px;
+            background-color: #0044cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #0044cc;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Mobile Styling */
+        @media (max-width: 768px) {
+            header {
+                padding: 50px 0;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            header .hire-button {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <img src="DSC_0239.jpg" alt="Albert Ndengeyintwali" style="transform: scale(3);">
+        </div>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section (Introduction) -->
+    <header>
+        <div class="container">
+            <h1>Hi, I'm Albert Ndengeyintwali</h1>
+            <p>Mathematical Scientist | Data Scientist | Data Analyst | Malaria Modeller</p>
+            <a href="#contact" class="hire-button">Learn More</a>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am Albert Ndengeyintwali, a mathematics and statistics professional with a Master’s degree from the African Institute for Mathematical Sciences (AIMS), where I specialized in malaria modeling, and a Bachelor’s degree from the University of Rwanda (UR). My passion lies in leveraging quantitative methods to solve real-world problems and extract meaningful insights, particularly in health and data science. With a strong analytical background and hands-on experience, I am committed to advancing data-driven solutions for complex challenges.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li>Data Analysis: Python, R, MATLAB</li>
+                <li>Mathematical Modeling and Simulation</li>
+                <li>Statistical Analysis</li>
+                <li>Dashboard and Report Writing using Power BI</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>Optimizing the Cobb-Douglas Production Function</h3>
+                <p>Developed an optimization model for the Cobb-Douglas production function under cost constraints to maximize output efficiency.</p>
+                <a href="UR_presentation.pdf" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Medical Charges Analysis</h3>
+                <p>Applied Multiple Linear Regression to analyze medical charges and identify significant predictors of healthcare costs.</p>
+                <a href="Medical_charges_analysis_beamer_presentation.pdf" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Diabetes Prediction Model</h3>
+                <p>Utilized Logistic Regression to analyze and predict diabetes cases based on patient data.</p>
+                <a href="AIMS_final_block_presentation.pdf" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Guarding in Art Galleries</h3>
+                <p>Developed mathematical models to optimize the positioning of guards in art galleries to maximize security coverage.</p>
+                <a href="Guard_beamer_presentation" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Comparing Malaria Vector Species Composition</h3>
+                <p>Analyzed malaria vector species composition trends in areas implementing Indoor Residual Spraying (IRS) and LLINs.</p>
+                <a href="AIMS_Project_beamer_presentation.pdf" target="_blank">View Project</a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <h2>Resume</h2>
+            <a href="My_CV.pdf" target="_blank">Download My Resume</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:ndengeyintwali1997@gmail.com">ndengeyintwali1997@gmail.com</a></p>
+            <p>Phone: +250782261670</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Albert Ndengeyintwali. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
