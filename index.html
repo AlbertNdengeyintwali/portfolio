@@ -137,30 +137,33 @@
             text-align: center;
             padding: 20px 0;
         }
+/* Mobile Styling */
+@media (max-width: 768px) {
+    header {
+        padding: 50px 0;
+    }
 
-        /* Mobile Styling */
-        @media (max-width: 768px) {
-            header {
-                padding: 50px 0;
-            }
+    nav {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 20px; /* Adds space below the logo */
+    }
 
-            nav {
-                flex-direction: column;
-                text-align: center;
-            }
+    nav ul {
+        margin-top: 20px;
+        padding: 0;
+        list-style-type: none; /* Removes the default bullet points */
+    }
 
-            nav ul {
-                margin-top: 20px;
-            }
+    nav ul li {
+        margin: 10px 0;
+    }
 
-            nav ul li {
-                margin: 10px 0;
-            }
+    header .hire-button {
+        padding: 12px 25px;
+    }
+}
 
-            header .hire-button {
-                padding: 12px 25px;
-            }
-        }
     </style>
 </head>
 <body>
