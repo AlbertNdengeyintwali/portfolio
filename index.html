@@ -323,12 +323,23 @@ header h1 {
 
 <!-- Resume Section -->
 <section id="resume">
-    <div class="container">
-        <h2>Resume</h2>
-        <iframe src="MS_CV_Job.pdf" width="100%" height="800px" style="border: none;"></iframe>
-        <p style="font-style: italic; font-size: 0.9em;">View My Resume</p>
+  <div class="container">
+    <h2>Resume</h2>
+    <button onclick="showCV()">View My Resume</button>
+    
+    <div id="cvViewer" style="display:none; margin-top: 20px;">
+      <iframe src="MS_CV_Job.pdf#toolbar=0" width="100%" height="800px" style="border: none;"></iframe>
+      <p style="font-size: 0.9em; font-style: italic;">Viewing only – download and print options hidden</p>
     </div>
+  </div>
 </section>
+
+<script>
+  function showCV() {
+    document.getElementById("cvViewer").style.display = "block";
+  }
+</script>
+
 
 
 <!-- Contact Section -->
