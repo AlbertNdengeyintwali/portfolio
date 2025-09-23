@@ -174,52 +174,61 @@ header h1 {
             text-align: center;
             padding: 20px 0;
         }
+/* Mobile Styling */
+@media (max-width: 768px) {
+    header {
+        padding: 50px 0;
+    }
 
-        /* Mobile Styling */
-        @media (max-width: 768px) {
-            header {
-                padding: 50px 0;
-            }
+    nav {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
 
-            nav {
-                flex-direction: column;
-                text-align: center;
-                align-items: center; /* Centers the content (logo and nav) */
-            }
+    nav .logo {
+        margin-bottom: 50px;
+    }
 
-            nav .logo {
-                margin-bottom: 50px; /* Adds space between logo and navigation */
-            }
+    nav ul {
+        padding: 0;
+        margin-top: 0;
+        display: block;
+    }
 
-            nav ul {
-                padding: 0;
-                margin-top: 0;
-                display: block; /* Ensures list items stack vertically */
-            }
+    nav ul li {
+        margin: 15px 0;
+    }
 
-            nav ul li {
-                margin: 15px 0; /* Adds more space between each navigation item */
-            }
+    nav ul li a {
+        font-size: 18px;
+        text-decoration: none;
+    }
 
-            nav ul li a {
-                font-size: 18px; /* Adjusts the font size for readability */
-                text-decoration: none; /* Ensures links aren't underlined */
-            }
+    header .hire-button {
+        padding: 12px 25px;
+    }
 
-            header .hire-button {
-                padding: 12px 25px;
-            }
+    /* FIX: Make projects take full width on mobile */
+    .projects-grid {
+        flex-direction: column;
+    }
 
-            /* Stack the projects vertically on mobile */
-            .projects-grid {
-                flex-direction: column;
-            }
-
-            .project-card {
-                width: 100%; /* Make each project card take full width on mobile */
-                margin: 10px 0;
-            }
-        }
+    .project-card {
+        width: 100% !important; /* Force full width on mobile */
+        margin: 15px 0; /* Add some vertical spacing */
+    }
+    
+    /* Optional: Adjust font sizes for better mobile readability */
+    .project-card h3 {
+        font-size: 20px;
+    }
+    
+    .project-card p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
 
         /* Flexbox layout for Projects */
         .projects-grid {
@@ -363,4 +372,5 @@ header h1 {
 
 </body>
 </html>
+
 
