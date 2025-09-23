@@ -395,49 +395,102 @@ document.addEventListener('dragstart', function(e) {
     </div>
 </section>
 
-<!-- Resume Section -->
-<section id="resume">
+<!-- Resume Section - Modified with print protection -->
+<section id="resume" class="no-print">
     <div class="container">
         <h2>Resume</h2>
-        <div class="pdf-viewer">
-            <!-- Embed PDF with restrictions -->
-            <embed src="Updated_CV.pdf#toolbar=0&navpanes=0&scrollbar=0" 
-                   type="application/pdf" 
-                   width="100%" 
-                   height="600px"
-                   style="border: 1px solid #ddd; pointer-events: none;">
-            <div class="viewer-note">
-                <p><i class="fas fa-lock"></i> Viewing only - Printing and downloading disabled</p>
-            </div>
-        </div>
+        <a href="Updated_CV.pdf#toolbar=0" target="_blank" rel="noopener noreferrer" class="print-protected">
+            View My Resume
+        </a>
+        <p class="print-notice">Printing disabled for privacy protection.</p>
     </div>
 </section>
 
 <style>
-.pdf-viewer {
+/* Print protection styles */
+.no-print {
     position: relative;
-    margin: 20px 0;
 }
 
-.viewer-note {
-    background-color: #f8f9fa;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #dee2e6;
-    border-top: none;
-    font-size: 14px;
-    color: #6c757d;
+.print-protected {
+    cursor: pointer;
 }
 
-/* Disable right-click on PDF viewer */
-embed {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    pointer-events: none;
+.print-notice {
+    font-size: 12px;
+    color: #666;
+    display: none;
 }
 
+@media print {
+    .no-print,
+    .print-protected,
+    #resume {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        opacity: 0 !important;
+    }
+    
+    /* Show notice when printing is attempted */
+    .print-notice {
+        display: block !important;
+        visibility: visible !important;
+        color: black;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    /* Prevent PDF embedding from being printed */
+    embed, object, iframe {
+        display: none !important;
+    }
+}
+</style>
+
+<script>
+// Comprehensive print protection
+document.addEventListener('DOMContentLoaded', function() {
+    // Block Ctrl+P
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+            e.preventDefault();
+            showPrintWarning();
+            return false;
+        }
+    });
+    
+    // Block browser print menu
+    window.addEventListener('beforeprint', function(e) {
+        e.preventDefault();
+        showPrintWarning();
+        return false;
+    });
+    
+    // Block right-click
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('#resume')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    function showPrintWarning() {
+        alert('Printing of the CV is disabled to protect personal information.');
+    }
+    
+    // Protect PDF viewer print functionality
+    const resumeLink = document.querySelector('#resume a');
+    if (resumeLink) {
+        resumeLink.addEventListener('click', function(e) {
+            // Open in new tab without print capabilities
+            window.open(this.href, '_blank', 'toolbar=no,location=no,status=no,menubar=no');
+            e.preventDefault();
+        });
+    }
+});
+</script>
 /* Print protection */
 @media print {
     #resume, .pdf-viewer, embed {
