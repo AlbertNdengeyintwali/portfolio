@@ -349,15 +349,102 @@ header h1 {
     </div>
 </section>
 
-<!-- Resume Section -->
-<section id="resume">
-  <div class="container">
-    <h2>Resume</h2>
-    <a href="Updated_CV.pdf#toolbar=0" target="_blank" rel="noopener noreferrer">
-      View My Resume
-    </a>
-  </div>
+<!-- Resume Section - Modified with print protection -->
+<section id="resume" class="no-print">
+    <div class="container">
+        <h2>Resume</h2>
+        <a href="Updated_CV.pdf#toolbar=0" target="_blank" rel="noopener noreferrer" class="print-protected">
+            View My Resume
+        </a>
+        <p class="print-notice">Printing disabled for privacy protection.</p>
+    </div>
 </section>
+
+<style>
+/* Print protection styles */
+.no-print {
+    position: relative;
+}
+
+.print-protected {
+    cursor: pointer;
+}
+
+.print-notice {
+    font-size: 12px;
+    color: #666;
+    display: none;
+}
+
+@media print {
+    .no-print,
+    .print-protected,
+    #resume {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        opacity: 0 !important;
+    }
+    
+    /* Show notice when printing is attempted */
+    .print-notice {
+        display: block !important;
+        visibility: visible !important;
+        color: black;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    /* Prevent PDF embedding from being printed */
+    embed, object, iframe {
+        display: none !important;
+    }
+}
+</style>
+
+<script>
+// Comprehensive print protection
+document.addEventListener('DOMContentLoaded', function() {
+    // Block Ctrl+P
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+            e.preventDefault();
+            showPrintWarning();
+            return false;
+        }
+    });
+    
+    // Block browser print menu
+    window.addEventListener('beforeprint', function(e) {
+        e.preventDefault();
+        showPrintWarning();
+        return false;
+    });
+    
+    // Block right-click
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('#resume')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    function showPrintWarning() {
+        alert('Printing of the CV is disabled to protect personal information.');
+    }
+    
+    // Protect PDF viewer print functionality
+    const resumeLink = document.querySelector('#resume a');
+    if (resumeLink) {
+        resumeLink.addEventListener('click', function(e) {
+            // Open in new tab without print capabilities
+            window.open(this.href, '_blank', 'toolbar=no,location=no,status=no,menubar=no');
+            e.preventDefault();
+        });
+    }
+});
+</script>
 
 
 
@@ -391,6 +478,7 @@ header h1 {
 
 </body>
 </html>
+
 
 
 
