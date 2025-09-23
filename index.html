@@ -395,16 +395,88 @@ document.addEventListener('dragstart', function(e) {
     </div>
 </section>
 
-<!-- Resume Section - Modified with print protection -->
-<section id="resume" class="no-print">
+<!-- Resume Section -->
+<section id="resume">
     <div class="container">
         <h2>Resume</h2>
-        <a href="Updated_CV.pdf#toolbar=0" target="_blank" rel="noopener noreferrer" class="print-protected">
-            View My Resume
-        </a>
-        <p class="print-notice">Printing disabled for privacy protection.</p>
+        <div class="pdf-viewer">
+            <!-- Embed PDF with restrictions -->
+            <embed src="Updated_CV.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                   type="application/pdf" 
+                   width="100%" 
+                   height="600px"
+                   style="border: 1px solid #ddd; pointer-events: none;">
+            <div class="viewer-note">
+                <p><i class="fas fa-lock"></i> Viewing only - Printing and downloading disabled</p>
+            </div>
+        </div>
     </div>
 </section>
+
+<style>
+.pdf-viewer {
+    position: relative;
+    margin: 20px 0;
+}
+
+.viewer-note {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Disable right-click on PDF viewer */
+embed {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Print protection */
+@media print {
+    #resume, .pdf-viewer, embed {
+        display: none !important;
+    }
+    
+    #resume::before {
+        content: "CV printing disabled for privacy protection.";
+        display: block !important;
+        text-align: center;
+        font-size: 18px;
+        margin: 50px;
+    }
+}
+</style>
+
+<script>
+// Additional protection for PDF viewer
+document.addEventListener('DOMContentLoaded', function() {
+    // Disable context menu on PDF viewer
+    const pdfViewer = document.querySelector('embed');
+    if (pdfViewer) {
+        pdfViewer.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('Right-click disabled on CV viewer.');
+            return false;
+        });
+    }
+    
+    // Block print commands
+    window.addEventListener('beforeprint', function(e) {
+        if (window.location.hash.includes('resume') || document.activeElement.tagName === 'EMBED') {
+            e.preventDefault();
+            alert('Printing of CV is disabled.');
+            return false;
+        }
+    });
+});
+</script>
 
 <style>
 /* Print protection styles */
@@ -524,6 +596,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
 
 
 
