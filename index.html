@@ -175,6 +175,52 @@ header h1 {
             padding: 20px 0;
         }
 
+<script>
+// Block all print methods
+window.onbeforeprint = function(event) {
+    event.preventDefault();
+    alert('Printing and saving as PDF is disabled for privacy protection.');
+    return false;
+};
+
+// Block Ctrl+P, Print menu, etc.
+document.addEventListener('keydown', function(e) {
+    // Block Ctrl+P
+    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+        e.preventDefault();
+        alert('Printing/Saving as PDF is disabled.');
+        return false;
+    }
+    
+    // Block Print Screen
+    if (e.key === 'PrintScreen') {
+        e.preventDefault();
+        alert('Screenshots are disabled.');
+        return false;
+    }
+});
+
+// Block right-click context menu
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Right-click is disabled for content protection.');
+    return false;
+});
+
+// Block text selection
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Block drag/drop of images
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
     /* Prevent CV from being printed */
 @media print {
     #resume,
@@ -478,6 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
 
 
 
